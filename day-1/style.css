@@ -1,0 +1,11 @@
+*::after {
+  box-sizing: border-box; /* Ensures padding/borders don't affect total width */
+  margin: 0;
+  padding: 0;
+}
+
+body{
+padding-left: 20%;
+padding-right: 20%;
+background: rgb(210, 163, 255);
+}
