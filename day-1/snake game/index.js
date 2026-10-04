@@ -19,3 +19,6 @@ let foodY;
 let snake = [
     {x:0, y:0}
 ]
+
+
+"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"
