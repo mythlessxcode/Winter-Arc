@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolling Dice</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #111827;
+      font-family: Arial, sans-serif;
+    }
+
+    .dice {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      padding: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .dot {
+      width: 20px;
+      height: 20px;
+      background: #111827;
+      border-radius: 50%;
+      justify-self: center;
+      align-self: center;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .rolling {
+      animation: roll 0.7s ease;
+    }
+
+    @keyframes roll {
+      0% {
+        transform: rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(180deg) scale(1.15);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1);
+      }
+    }
+
+    #result {
+      color: white;
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dice" id="dice"></div>
+
+  <button onclick="rollDice()">Roll Dice</button>
+
+  <div id="result">Result: 1</div>
+
+
+  <script>
+
+    const dice = document.getElementById("dice");
+    const result = document.getElementById("result");
+
+    const faces = {
+      1: [5],
+      2: [1, 9],
+      3: [1, 5, 9],
+      4: [1, 3, 7, 9],
+      5: [1, 3, 5, 7, 9],
+      6: [1, 3, 4, 6, 7, 9]
+    };
+
+    function showDice(number) {
+
+      dice.innerHTML = "";
+
+      faces[number].forEach(position => {
+
+        const dot = document.createElement("div");
+
+        dot.classList.add("dot");
+
+        dot.style.gridArea = position;
+
+        dice.appendChild(dot);
+
+      });
+    }
+
+
+    function rollDice() {
+
+      dice.classList.remove("rolling");
+
+      // Restart animation
+      void dice.offsetWidth;
+
+      dice.classList.add("rolling");
+
+      const number = Math.floor(Math.random() * 6) + 1;
+
+      setTimeout(() => {
+
+        showDice(number);
+
+        result.textContent = "Result: " + number;
+
+      }, 350);
+    }
+
+
+    showDice(1);
+
+  </script>
+
+</body>
+</html>
