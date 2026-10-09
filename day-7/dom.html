@@ -13,11 +13,13 @@
 </head>
 <body class="bg-black">
     <div class="parent">
-        <div class="days">Monday</div>
-        <div class="days">Tuesday</div>
-        <div class="days">Wednesday</div>
-        <div class="days">Thursday</div>
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
     </div>
+
+</body>
     
     <script>
         const parent = document.querySelector('.parent')
@@ -29,13 +31,18 @@
             
         // }
         
-        parent.children[1].style.color = 'orange'
-        console.log(parent.firstElementChild);
-        console.log(parent.lastElementChild);
+        parent.children[2].style.color = 'orange'
+        // console.log(parent.firstElementChild);
+        // console.log(parent.lastElementChild);
+
+        const dayOne = document.querySelector('.day')
+        console.log(dayOne);
+        // console.log(dayOne.parentElement);
+        
+        // console.log("NODES: ", parent.childNodes);
         
         
         
         
     </script>
-</body>
 </html>
