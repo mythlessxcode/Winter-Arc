@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h1>Mythless</h1>
+    <button id="start">Start</button>
+    <button id="Stop">Stop</button>
+    <h1 id="counter">0</h1>
+</body>
+<script>
+
+    let count = 0;
+    const counter = document.querySelector('#counter')
+   const start = document.querySelector('#start').addEventListener('click',()=>{
+    
+ const startTime = setInterval(() => {
+       count++,
+       counter.textContent = count;
+       console.log(count);
+
+        const stop = document.querySelector('#Stop').addEventListener('click', ()=>{
+    clearInterval(startTime)
+    // counter.textContent = 0;
+   })
+        
+    }, 1000);
+   })
+
+  
+   
+   
+ 
+</script>
+</html>
