@@ -29,7 +29,7 @@ const randomColor = function(){
 };
 let intervalID;
 const startChangingColor = ()=>{
-
+//here  we put a safty check which is good practice to code
     if(!intervalID){
         intervalID = setInterval(chanBgColor, 1000)
     }
@@ -41,7 +41,7 @@ const startChangingColor = ()=>{
 
 const stopChangingColor = ()=>{
     clearInterval(intervalID);
-    intervalID = null;
+    intervalID = null;  // we flush the memory by puting null
 }
 
    document.querySelector('#start').addEventListener('click', startChangingColor)
