@@ -1,0 +1,15 @@
+{
+  "name": "mythbackend",
+  "version": "1.0.0",
+  "description": "learning node",
+  "main": "back.js",
+  "scripts": {
+    "start": "node back.js"
+  },
+  "author": "mythless",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "express": "^5.3.0"
+  }
+}
