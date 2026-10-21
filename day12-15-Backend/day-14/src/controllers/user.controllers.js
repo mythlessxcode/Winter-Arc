@@ -71,4 +71,3 @@ const registerUser = asyncHandler(async(req, res)=>{
 
 export {registerUser}
 
-//after this i am coming from pandal and i will study

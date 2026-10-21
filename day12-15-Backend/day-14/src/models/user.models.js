@@ -17,20 +17,20 @@ const userSchema = new Schema({
         required: true,
         unique: true,
         lowercase: true,
-        trim: true,
+        trim: true
         
     },
     fullname:{
         type:String,
         required: true,
         lowercase: true,
-        trim: true,
+        trim: true
         
     },
-    avatar:{
-        string: String, //cloudinary url
-        required: true
-    },
+   avatar: {
+    type: String,
+    required: true
+},
     coverimage:{
         type:String,  //cloudinary url
 
@@ -43,7 +43,7 @@ const userSchema = new Schema({
     ],
     password: {
         type: String,
-        required:[true, 'passwoed is required']
+        required:true
     },
     refreshToken:{
         type: String
@@ -86,4 +86,4 @@ process.env.REFRESH_TOKEN_SECRET,
 
 
 
-export const User = mongoose.Model("User", userSchema);
+export const User = mongoose.model("User", userSchema);
