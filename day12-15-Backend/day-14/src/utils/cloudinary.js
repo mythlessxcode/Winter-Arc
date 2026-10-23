@@ -15,6 +15,8 @@ import fs from 'fs'
         })
 
         console.log("file is uploaded on cloudinary", response.url);
+
+        return response;
         
 
     } catch (error) {
