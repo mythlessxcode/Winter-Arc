@@ -1,23 +1,29 @@
-import express from "express"
-import cors from "cors"
-import cookieParser from "cookie-parser"
-const app = express()
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
+const app = express();
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
-    Credential:true
+    credentials: true
+}));
 
-}))
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+app.use(express.static("public"));
+app.use(cookieParser());
 
-app.use(express.json({limit:'16kb'}))
-app.use(express.urlencoded({extended:true, limit:'16kb'}))
-app.use(express.static("public"))
-app.use(cookieParser())
+// Routes
+import userRouter from "./routes/user.routes.js";
+
+app.use("/api/v1/users", userRouter);
+
+// Error handler MUST come after routes
 app.use((err, req, res, next) => {
     console.error("ERROR:", err);
 
-    const statusCode = err.statusCode || err.code || 500;
+    const statusCode = err.statusCode || 500;
 
     return res.status(statusCode).json({
         success: false,
@@ -25,10 +31,4 @@ app.use((err, req, res, next) => {
     });
 });
 
-//routes
-
-import userRouter from "./routes/user.routes.js"
-
-//routes declaration
-app.use("/api/v1/users", userRouter)
-export {app}  
+export { app };

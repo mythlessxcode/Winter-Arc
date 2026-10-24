@@ -36,8 +36,13 @@ const registerUser = asyncHandler(async (req, res) => {
     console.log("STEP 2: User lookup completed");
 
     if (existedUser) {
-        throw new ApiError(409, "User already exists");
-    }
+    console.log("Duplicate user detected");
+
+    return res.status(409).json({
+        success: false,
+        message: "User with email or username already exists"
+    });
+}
 
     // Get uploaded image paths
     const avatarLocalPath = req.files?.avatar?.[0]?.path;
@@ -46,6 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is required");
     }
+    
 
     // STEP 3: Upload avatar
     const avatar = await uploadOnCloudinary(avatarLocalPath);
